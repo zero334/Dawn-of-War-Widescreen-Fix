@@ -115,9 +115,9 @@
             this.labelDragNotification.AutoSize = true;
             this.labelDragNotification.Location = new System.Drawing.Point(6, 23);
             this.labelDragNotification.Name = "labelDragNotification";
-            this.labelDragNotification.Size = new System.Drawing.Size(153, 13);
+            this.labelDragNotification.Size = new System.Drawing.Size(200, 13);
             this.labelDragNotification.TabIndex = 6;
-            this.labelDragNotification.Text = "Drag and drop into this window";
+            this.labelDragNotification.Text = "Drag and drop the game into this window";
             // 
             // groupBoxPath
             // 
@@ -126,7 +126,7 @@
             this.groupBoxPath.Controls.Add(this.labelDragNotification);
             this.groupBoxPath.Location = new System.Drawing.Point(178, 12);
             this.groupBoxPath.Name = "groupBoxPath";
-            this.groupBoxPath.Size = new System.Drawing.Size(201, 117);
+            this.groupBoxPath.Size = new System.Drawing.Size(217, 117);
             this.groupBoxPath.TabIndex = 9;
             this.groupBoxPath.TabStop = false;
             this.groupBoxPath.Text = "Path";
@@ -163,7 +163,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(392, 210);
+            this.ClientSize = new System.Drawing.Size(407, 214);
             this.Controls.Add(this.groupBoxPath);
             this.Controls.Add(this.groupBoxResolution);
             this.Controls.Add(this.btnStart);
