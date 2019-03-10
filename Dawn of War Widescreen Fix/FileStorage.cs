@@ -18,7 +18,7 @@ namespace Dawn_of_War_Widescreen_Fix
         public Tuple<String, bool> Platform { get; private set; }
         public Tuple<String, bool> SpDx9 { get; private set; }
         public Tuple<String, bool> UserInterface { get; private set; }
-        private List<String> targetFiles;
+        private readonly List<String> targetFiles;
 
 
         public FileStorage()
@@ -33,7 +33,7 @@ namespace Dawn_of_War_Widescreen_Fix
             Platform = new Tuple<String, bool>("Platform.dll", false);
             SpDx9 = new Tuple<String, bool>("spDx9.dll", false);
             UserInterface = new Tuple<String, bool>("UserInterface.dll", false);
-            targetFiles = new List<String>() { W40k.Item1, W40kWA.Item1, Platform.Item1, SpDx9.Item1, UserInterface.Item1 };
+            targetFiles = new List<String>{ W40k.Item1, W40kWA.Item1, Platform.Item1, SpDx9.Item1, UserInterface.Item1 };
         }
 
         public void SetFilePath(String path)
@@ -65,7 +65,7 @@ namespace Dawn_of_War_Widescreen_Fix
             }
         }
 
-        private List<String> ProcessDirectory(string targetDirectory)
+        private static List<String> ProcessDirectory(string targetDirectory)
         {
             List<String> files = new List<String>();
             foreach (string fileName in Directory.GetFiles(targetDirectory))

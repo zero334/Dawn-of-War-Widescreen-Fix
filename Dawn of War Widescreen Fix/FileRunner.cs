@@ -6,7 +6,7 @@ namespace Dawn_of_War_Widescreen_Fix
 {
     class FileRunner
     {
-        AttributeStorage attributes;
+        readonly AttributeStorage attributes;
         public FileRunner(AttributeStorage attributes)
         {
             this.attributes = attributes;
@@ -58,7 +58,7 @@ namespace Dawn_of_War_Widescreen_Fix
             return true;
         }
 
-        private String RemoveAfter(String input, char delimiter)
+        private static String RemoveAfter(String input, char delimiter)
         {
             int index = input.LastIndexOf(delimiter);
             if (index > 0)
@@ -68,7 +68,7 @@ namespace Dawn_of_War_Widescreen_Fix
             return input;
         }
 
-        private byte[] StringToByteArray(String hex)
+        private static byte[] StringToByteArray(String hex)
         {
             int NumberChars = hex.Length;
             byte[] bytes = new byte[NumberChars / 2];
@@ -79,7 +79,7 @@ namespace Dawn_of_War_Widescreen_Fix
             return bytes;
         }
 
-        private string ByteArrayToString(byte[] bytes)
+        private static string ByteArrayToString(byte[] bytes)
         {
             char[] c = new char[bytes.Length * 2];
             int b;

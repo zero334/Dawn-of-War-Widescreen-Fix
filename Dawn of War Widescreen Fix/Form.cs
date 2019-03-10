@@ -5,7 +5,7 @@ namespace Dawn_of_War_Widescreen_Fix
 {
     public partial class Form : System.Windows.Forms.Form
     {
-        AttributeStorage attributeStorage;
+        readonly AttributeStorage attributeStorage;
         public Form()
         {
             InitializeComponent();
@@ -15,7 +15,7 @@ namespace Dawn_of_War_Widescreen_Fix
         }
 
 
-        void Form_DragEnter(object sender, DragEventArgs e)
+        static void Form_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
