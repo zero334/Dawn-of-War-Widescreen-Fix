@@ -14,13 +14,12 @@ namespace Dawn_of_War_Widescreen_Fix
 
         public bool ProcessFiles()
         {
-            String filePath = attributes.fileStorage.FilePath;
-            List<Tuple<String, bool>> files = attributes.fileStorage.Files;
+            String filePath = attributes.FileStorage.FilePath;
+            List<Tuple<String, bool>> files = attributes.FileStorage.Files;
 
             foreach (Tuple<String, bool> file in files)
             {
-                if (file.Item2)
-                {
+                if (file.Item2) {
                     String currentFile = filePath + '\\' + file.Item1;
 
                     byte[] fileContent = File.ReadAllBytes(currentFile);
@@ -29,12 +28,12 @@ namespace Dawn_of_War_Widescreen_Fix
                     String replacedFileContent = hexFile.Replace(attributes.BaseString, attributes.ReplacementString);
 
                     byte[] fixedFileContent = StringToByteArray(replacedFileContent);
-                
+
                     File.WriteAllBytes(currentFile, fixedFileContent);
                 }
             }
 
-            String iniFile = filePath + '\\' + attributes.fileStorage.LocalIni.Item1;
+            String iniFile = filePath + '\\' + attributes.FileStorage.LocalIni.Item1;
             String[] iniFileLinesInput = File.ReadAllLines(iniFile);
             List<String> iniFileLinesOutput = new List<String>();
 
@@ -54,7 +53,6 @@ namespace Dawn_of_War_Widescreen_Fix
                 }
             }
             File.WriteAllLines(iniFile, iniFileLinesOutput);
-
             return true;
         }
 

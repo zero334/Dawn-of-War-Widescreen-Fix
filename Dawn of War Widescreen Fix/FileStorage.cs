@@ -77,7 +77,7 @@ namespace Dawn_of_War_Widescreen_Fix
 
         public bool CheckFilePath()
         {
-            return (FilePath.Length > 0) ? true : false;
+            return FilePath.Length > 0;
         }
     }
 }
