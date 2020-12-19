@@ -27,8 +27,8 @@ namespace Dawn_of_War_Widescreen_Fix
         {
             string[] files = (string[]) e.Data.GetData(DataFormats.FileDrop);
 
-            attributeStorage.fileStorage.SetFilePath(files[0]);
-            if (attributeStorage.fileStorage.CheckFilePath())
+            attributeStorage.FileStorage.SetFilePath(files[0]);
+            if (attributeStorage.FileStorage.CheckFilePath())
             {
                 labelPath.Text = "Valid \u2714";
             }
@@ -40,7 +40,7 @@ namespace Dawn_of_War_Widescreen_Fix
 
         private void BtnStart_Click(object sender, EventArgs e)
         {
-            if (!attributeStorage.fileStorage.CheckFilePath())
+            if (!attributeStorage.FileStorage.CheckFilePath())
             {
                 MessageBox.Show("Please set a valid path", "Invalid path", MessageBoxButtons.OK);
                 return;
@@ -93,29 +93,32 @@ namespace Dawn_of_War_Widescreen_Fix
                 break;
 
                 default:
-                    DialogResult result = MessageBox.Show("Your aspect ratio is not supported. Try anyway?", "Unsupported aspect ratio detected", MessageBoxButtons.YesNo);
+                    DialogResult result = MessageBox.Show("Your aspect ratio is not tested. Try anyway?", "Not tested aspect ratio detected", MessageBoxButtons.YesNo);
                     if (result != DialogResult.Yes)
                     {
                         return;
                     }
+                    attributeStorage.LookupDecimalAspectRatio();
                 break;
             }
 
-            if (attributeStorage.CheckAspectRatioValues())
-            {
+            if (attributeStorage.CheckAspectRatioValues()) {
                 String attributeStorageCheck = attributeStorage.CheckFileStorage();
-                if (attributeStorageCheck.Length > 0)
-                {
+                if (attributeStorageCheck.Length > 0) {
                     MessageBox.Show(attributeStorageCheck, "Storage element error", MessageBoxButtons.OK);
                     return;
                 }
 
                 FileRunner runner = new FileRunner(attributeStorage);
-                runner.ProcessFiles();
-
-                btnStart.Text = "Done";
-                btnStart.Enabled = false;
-                notifyIcon.ShowBalloonTip(1000);
+                if (runner.ProcessFiles()) {
+                    btnStart.Text = "Done";
+                    btnStart.Enabled = false;
+                    notifyIcon.ShowBalloonTip(1000);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Error while checking the aspect ratio values.", "Error", MessageBoxButtons.OK);
             }
         }
     }
