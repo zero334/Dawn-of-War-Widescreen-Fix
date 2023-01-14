@@ -11,10 +11,8 @@
   </p>
 </p>
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/efca97fbdd5b444d9eaccb28a9f1bd8d)](https://www.codacy.com/app/zero334/Dawn-of-War-Widescreen-Fix?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=zero334/Dawn-of-War-Widescreen-Fix&amp;utm_campaign=Badge_Grade)
-[![GitHub issues](https://img.shields.io/github/issues/zero334/G19SystemMonitor.svg)](https://github.com/zero334/Dawn-of-War-Widescreen-Fix/issues)
-
-
+![Codacy grade](https://img.shields.io/codacy/grade/e960d37cc15e447a80dae9d1f83b143b)
+![GitHub issues](https://img.shields.io/github/issues/zero334/Dawn-of-War-Widescreen-Fix)
 
 This is an application to enable the aspect ratio of 16/9 or 16/10 for the game "Warhammer 40.000: Dawn of War" & "Warhammer 40.000: Dawn of War – Winter Assault".
 
