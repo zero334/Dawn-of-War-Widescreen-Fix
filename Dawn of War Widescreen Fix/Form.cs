@@ -98,7 +98,7 @@ namespace Dawn_of_War_Widescreen_Fix
                     {
                         return;
                     }
-                    attributeStorage.LookupDecimalAspectRatio();
+                    attributeStorage.CalculateAspectRatioString();
                 break;
             }
 
