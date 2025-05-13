@@ -25,7 +25,7 @@ This is an application to enable the aspect ratio of 16/9 or 16/10 for the game 
 
 #### Requirements:
    
-      - Installed .NET Framework 4
+      - Installed .NET Framework 4.8
       - A "Warhammer 40.000: Dawn of War" or "Warhammer 40.000: Dawn of War – Winter Assault" installation
 
 #### Issues:
