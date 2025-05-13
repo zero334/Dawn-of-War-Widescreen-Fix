@@ -56,6 +56,21 @@ namespace Dawn_of_War_Widescreen_Fix
             return true;
         }
 
+        public bool BackupFiles() {
+            String filePath = attributes.FileStorage.FilePath;
+            List<Tuple<String, bool>> files = attributes.FileStorage.Files;
+            foreach (Tuple<String, bool> file in files)
+            {
+                if (file.Item2)
+                {
+                    String currentFile = filePath + '\\' + file.Item1;
+                    String backupFile = filePath + '\\' + Path.GetFileNameWithoutExtension(currentFile) + "_backup" + Path.GetExtension(currentFile);
+                    File.Copy(currentFile, backupFile);
+                }
+            }
+            return true;
+        }
+
         private static String RemoveAfter(String input, char delimiter)
         {
             int index = input.LastIndexOf(delimiter);

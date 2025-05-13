@@ -41,13 +41,16 @@
             this.labelPath = new System.Windows.Forms.Label();
             this.labelPathIndicator = new System.Windows.Forms.Label();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.backupCheckbox = new System.Windows.Forms.CheckBox();
+            this.GroupBoxOptions = new System.Windows.Forms.GroupBox();
             this.groupBoxResolution.SuspendLayout();
             this.groupBoxPath.SuspendLayout();
+            this.GroupBoxOptions.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(12, 153);
+            this.btnStart.Location = new System.Drawing.Point(235, 162);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(160, 48);
             this.btnStart.TabIndex = 0;
@@ -91,7 +94,7 @@
             this.groupBoxResolution.Controls.Add(this.radioButton1366);
             this.groupBoxResolution.Controls.Add(this.radioButton1920);
             this.groupBoxResolution.Controls.Add(this.radioButton1680);
-            this.groupBoxResolution.Location = new System.Drawing.Point(12, 12);
+            this.groupBoxResolution.Location = new System.Drawing.Point(235, 12);
             this.groupBoxResolution.Name = "groupBoxResolution";
             this.groupBoxResolution.Size = new System.Drawing.Size(160, 117);
             this.groupBoxResolution.TabIndex = 5;
@@ -124,7 +127,7 @@
             this.groupBoxPath.Controls.Add(this.labelPath);
             this.groupBoxPath.Controls.Add(this.labelPathIndicator);
             this.groupBoxPath.Controls.Add(this.labelDragNotification);
-            this.groupBoxPath.Location = new System.Drawing.Point(178, 12);
+            this.groupBoxPath.Location = new System.Drawing.Point(12, 12);
             this.groupBoxPath.Name = "groupBoxPath";
             this.groupBoxPath.Size = new System.Drawing.Size(217, 117);
             this.groupBoxPath.TabIndex = 9;
@@ -157,13 +160,34 @@
             this.notifyIcon.Text = "Dawn of War Widescreen Fix";
             this.notifyIcon.Visible = true;
             // 
+            // backupCheckbox
+            // 
+            this.backupCheckbox.AutoSize = true;
+            this.backupCheckbox.Location = new System.Drawing.Point(9, 26);
+            this.backupCheckbox.Name = "backupCheckbox";
+            this.backupCheckbox.Size = new System.Drawing.Size(171, 17);
+            this.backupCheckbox.TabIndex = 10;
+            this.backupCheckbox.Text = "Create backup of patched files";
+            this.backupCheckbox.UseVisualStyleBackColor = true;
+            // 
+            // GroupBoxOptions
+            // 
+            this.GroupBoxOptions.Controls.Add(this.backupCheckbox);
+            this.GroupBoxOptions.Location = new System.Drawing.Point(12, 135);
+            this.GroupBoxOptions.Name = "GroupBoxOptions";
+            this.GroupBoxOptions.Size = new System.Drawing.Size(217, 75);
+            this.GroupBoxOptions.TabIndex = 11;
+            this.GroupBoxOptions.TabStop = false;
+            this.GroupBoxOptions.Text = "Options";
+            // 
             // Form
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(407, 214);
+            this.ClientSize = new System.Drawing.Size(407, 218);
+            this.Controls.Add(this.GroupBoxOptions);
             this.Controls.Add(this.groupBoxPath);
             this.Controls.Add(this.groupBoxResolution);
             this.Controls.Add(this.btnStart);
@@ -177,6 +201,8 @@
             this.groupBoxResolution.PerformLayout();
             this.groupBoxPath.ResumeLayout(false);
             this.groupBoxPath.PerformLayout();
+            this.GroupBoxOptions.ResumeLayout(false);
+            this.GroupBoxOptions.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -194,6 +220,8 @@
         private System.Windows.Forms.Label labelPath;
         private System.Windows.Forms.Label labelPathIndicator;
         private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.CheckBox backupCheckbox;
+        private System.Windows.Forms.GroupBox GroupBoxOptions;
     }
 }
 

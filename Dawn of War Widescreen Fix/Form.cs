@@ -110,6 +110,9 @@ namespace Dawn_of_War_Widescreen_Fix
                 }
 
                 FileRunner runner = new FileRunner(attributeStorage);
+                if (backupCheckbox.Checked) {
+                    runner.BackupFiles();
+                }
                 if (runner.ProcessFiles()) {
                     btnStart.Text = "Done";
                     btnStart.Enabled = false;
