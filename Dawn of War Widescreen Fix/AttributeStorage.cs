@@ -5,8 +5,8 @@ namespace Dawn_of_War_Widescreen_Fix
 {
     class AttributeStorage
     {
-        public ushort Width { get; set; }
-        public ushort Height { get; set; }
+        public int Width { get; set; }
+        public int Height { get; set; }
         public String AspectRatio { get; set; }
         public String ReplacementString { get; set; }
         public String BaseString { get; private set; }
@@ -24,7 +24,7 @@ namespace Dawn_of_War_Widescreen_Fix
 
         public void CalculateAspectRatio()
         {
-            ushort greatestCommonDivisor = (ushort)Gcd(Width, Height);
+            int greatestCommonDivisor = Gcd(Width, Height);
             AspectRatio = (Width / greatestCommonDivisor + "/" + Height / greatestCommonDivisor);
         }
 

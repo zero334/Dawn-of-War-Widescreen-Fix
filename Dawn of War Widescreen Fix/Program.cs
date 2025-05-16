@@ -13,7 +13,7 @@ namespace Dawn_of_War_Widescreen_Fix
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form());
+            Application.Run(new MainForm());
         }
     }
 }

@@ -3,17 +3,30 @@ using System.Windows.Forms;
 
 namespace Dawn_of_War_Widescreen_Fix
 {
-    public partial class Form : System.Windows.Forms.Form
+    public partial class MainForm : Form
     {
-        readonly AttributeStorage attributeStorage;
-        public Form()
+        private readonly AttributeStorage attributeStorage;
+
+        public MainForm()
         {
             InitializeComponent();
             attributeStorage = new AttributeStorage();
             this.DragEnter += new DragEventHandler(Form_DragEnter);
             this.DragDrop += new DragEventHandler(Form_DragDrop);
-        }
 
+
+            var monitors = MonitorResolution.GetAll();
+            if (monitors.Count > 0)
+            {
+                var monitorToUse = MonitorResolution.DifferentResolutionMonitorssPresent(monitors) ? MonitorResolution.GetScreenFromUser(monitors) : monitors[0];
+                attributeStorage.Width = monitorToUse.Width;
+                attributeStorage.Height = monitorToUse.Height;
+                labelResolution.Text = attributeStorage.Width + " x" + attributeStorage.Height;
+            } else {
+                MessageBox.Show("No screen detected.", "Critical Error");
+                Environment.Exit(0);
+            }
+        }
 
         static void Form_DragEnter(object sender, DragEventArgs e)
         {
@@ -46,46 +59,13 @@ namespace Dawn_of_War_Widescreen_Fix
                 return;
             }
 
-            if (radioButton1920.Checked)
-            {
-                attributeStorage.Width = 1920;
-                attributeStorage.Height = 1080;
-            }
-            else if (radioButton1680.Checked)
-            {
-                attributeStorage.Width = 1680;
-                attributeStorage.Height = 1050;
-            }
-            else if (radioButton1366.Checked)
-            {
-                attributeStorage.Width = 1366;
-                attributeStorage.Height = 768;
-            }
-            else if (radioButtonAutoDetect.Checked)
-            {
-                attributeStorage.Width = (ushort) Screen.PrimaryScreen.Bounds.Width;
-                attributeStorage.Height = (ushort) Screen.PrimaryScreen.Bounds.Height;
-            }
-            else
-            {
-                DialogResult result = MessageBox.Show("No resolution has been set.\nUse auto detection?", "No resolution set", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
-                {
-                    attributeStorage.Width = (ushort)Screen.PrimaryScreen.Bounds.Width;
-                    attributeStorage.Height = (ushort)Screen.PrimaryScreen.Bounds.Height;
-                }
-                else
-                {
-                    return;
-                }
-            }
-
+            attributeStorage.CalculateAspectRatioString();
             attributeStorage.CalculateAspectRatio();
-                    
+
             switch (attributeStorage.AspectRatio)
             {
                 case "16/9":
-                    attributeStorage.ReplacementString  = "398EE33F";
+                    attributeStorage.ReplacementString = "398EE33F";
                 break;
  
                 case "16/10":
@@ -93,12 +73,11 @@ namespace Dawn_of_War_Widescreen_Fix
                 break;
 
                 default:
-                    DialogResult result = MessageBox.Show("Your aspect ratio is not tested. Try anyway?", "Not tested aspect ratio detected", MessageBoxButtons.YesNo);
+                    DialogResult result = MessageBox.Show("Your aspect ratio is not tested by the developer. Try anyway?", "Not tested aspect ratio detected", MessageBoxButtons.YesNo);
                     if (result != DialogResult.Yes)
                     {
                         return;
                     }
-                    attributeStorage.CalculateAspectRatioString();
                 break;
             }
 
@@ -123,6 +102,18 @@ namespace Dawn_of_War_Widescreen_Fix
             {
                 MessageBox.Show("Error while checking the aspect ratio values.", "Error", MessageBoxButtons.OK);
             }
+        }
+
+        private void ButtonManualOverride_Click(object sender, EventArgs e)
+        {
+            using (var resolutionOverrideWindow = new ResolutionOverride(attributeStorage.Width, attributeStorage.Height))
+            {
+                resolutionOverrideWindow.ShowDialog();
+                attributeStorage.Width = resolutionOverrideWindow.GetOverrideWidth();
+                attributeStorage.Height = resolutionOverrideWindow.GetOverrideHeight();
+            }
+
+            labelResolution.Text = attributeStorage.Width + " x" + attributeStorage.Height;
         }
     }
 }

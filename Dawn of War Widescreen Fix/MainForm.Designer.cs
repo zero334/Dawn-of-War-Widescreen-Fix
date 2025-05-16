@@ -1,6 +1,6 @@
 ﻿namespace Dawn_of_War_Widescreen_Fix
 {
-    partial class Form
+    partial class MainForm
     {
         /// <summary>
         /// Erforderliche Designervariable.
@@ -29,13 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.btnStart = new System.Windows.Forms.Button();
-            this.radioButton1920 = new System.Windows.Forms.RadioButton();
-            this.radioButton1366 = new System.Windows.Forms.RadioButton();
-            this.radioButton1680 = new System.Windows.Forms.RadioButton();
             this.groupBoxResolution = new System.Windows.Forms.GroupBox();
-            this.radioButtonAutoDetect = new System.Windows.Forms.RadioButton();
+            this.labelResolution = new System.Windows.Forms.Label();
+            this.buttonManualOverride = new System.Windows.Forms.Button();
+            this.labelPatchingResolution = new System.Windows.Forms.Label();
             this.labelDragNotification = new System.Windows.Forms.Label();
             this.groupBoxPath = new System.Windows.Forms.GroupBox();
             this.labelPath = new System.Windows.Forms.Label();
@@ -58,60 +57,45 @@
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.BtnStart_Click);
             // 
-            // radioButton1920
-            // 
-            this.radioButton1920.AutoSize = true;
-            this.radioButton1920.Location = new System.Drawing.Point(6, 42);
-            this.radioButton1920.Name = "radioButton1920";
-            this.radioButton1920.Size = new System.Drawing.Size(108, 17);
-            this.radioButton1920.TabIndex = 1;
-            this.radioButton1920.Text = "1920x1080 (16:9)";
-            this.radioButton1920.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1366
-            // 
-            this.radioButton1366.AutoSize = true;
-            this.radioButton1366.Location = new System.Drawing.Point(6, 88);
-            this.radioButton1366.Name = "radioButton1366";
-            this.radioButton1366.Size = new System.Drawing.Size(108, 17);
-            this.radioButton1366.TabIndex = 2;
-            this.radioButton1366.Text = "1366x768 (16:10)";
-            this.radioButton1366.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1680
-            // 
-            this.radioButton1680.AutoSize = true;
-            this.radioButton1680.Location = new System.Drawing.Point(6, 65);
-            this.radioButton1680.Name = "radioButton1680";
-            this.radioButton1680.Size = new System.Drawing.Size(108, 17);
-            this.radioButton1680.TabIndex = 3;
-            this.radioButton1680.Text = "1680x1050 (16:9)";
-            this.radioButton1680.UseVisualStyleBackColor = true;
-            // 
             // groupBoxResolution
             // 
-            this.groupBoxResolution.Controls.Add(this.radioButtonAutoDetect);
-            this.groupBoxResolution.Controls.Add(this.radioButton1366);
-            this.groupBoxResolution.Controls.Add(this.radioButton1920);
-            this.groupBoxResolution.Controls.Add(this.radioButton1680);
+            this.groupBoxResolution.Controls.Add(this.labelResolution);
+            this.groupBoxResolution.Controls.Add(this.buttonManualOverride);
+            this.groupBoxResolution.Controls.Add(this.labelPatchingResolution);
             this.groupBoxResolution.Location = new System.Drawing.Point(235, 12);
             this.groupBoxResolution.Name = "groupBoxResolution";
             this.groupBoxResolution.Size = new System.Drawing.Size(160, 117);
             this.groupBoxResolution.TabIndex = 5;
             this.groupBoxResolution.TabStop = false;
-            this.groupBoxResolution.Text = "Resolution";
+            this.groupBoxResolution.Text = "Resolution Options";
             // 
-            // radioButtonAutoDetect
+            // labelResolution
             // 
-            this.radioButtonAutoDetect.AutoSize = true;
-            this.radioButtonAutoDetect.Checked = true;
-            this.radioButtonAutoDetect.Location = new System.Drawing.Point(6, 19);
-            this.radioButtonAutoDetect.Name = "radioButtonAutoDetect";
-            this.radioButtonAutoDetect.Size = new System.Drawing.Size(80, 17);
-            this.radioButtonAutoDetect.TabIndex = 4;
-            this.radioButtonAutoDetect.TabStop = true;
-            this.radioButtonAutoDetect.Text = "Auto detect";
-            this.radioButtonAutoDetect.UseVisualStyleBackColor = true;
+            this.labelResolution.AutoSize = true;
+            this.labelResolution.Location = new System.Drawing.Point(6, 29);
+            this.labelResolution.Name = "labelResolution";
+            this.labelResolution.Size = new System.Drawing.Size(115, 13);
+            this.labelResolution.TabIndex = 7;
+            this.labelResolution.Text = "Resolution placeholder";
+            // 
+            // buttonManualOverride
+            // 
+            this.buttonManualOverride.Location = new System.Drawing.Point(6, 71);
+            this.buttonManualOverride.Name = "buttonManualOverride";
+            this.buttonManualOverride.Size = new System.Drawing.Size(148, 40);
+            this.buttonManualOverride.TabIndex = 6;
+            this.buttonManualOverride.Text = "Manual override";
+            this.buttonManualOverride.UseVisualStyleBackColor = true;
+            this.buttonManualOverride.Click += new System.EventHandler(this.ButtonManualOverride_Click);
+            // 
+            // labelPatchingResolution
+            // 
+            this.labelPatchingResolution.AutoSize = true;
+            this.labelPatchingResolution.Location = new System.Drawing.Point(6, 16);
+            this.labelPatchingResolution.Name = "labelPatchingResolution";
+            this.labelPatchingResolution.Size = new System.Drawing.Size(100, 13);
+            this.labelPatchingResolution.TabIndex = 5;
+            this.labelPatchingResolution.Text = "Patching resolution:";
             // 
             // labelDragNotification
             // 
@@ -178,9 +162,9 @@
             this.GroupBoxOptions.Size = new System.Drawing.Size(217, 75);
             this.GroupBoxOptions.TabIndex = 11;
             this.GroupBoxOptions.TabStop = false;
-            this.GroupBoxOptions.Text = "Options";
+            this.GroupBoxOptions.Text = "General Options";
             // 
-            // Form
+            // MainForm
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -194,7 +178,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "Form";
+            this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dawn of War Widescreen Fix";
             this.groupBoxResolution.ResumeLayout(false);
@@ -210,11 +194,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnStart;
-        private System.Windows.Forms.RadioButton radioButton1920;
-        private System.Windows.Forms.RadioButton radioButton1366;
-        private System.Windows.Forms.RadioButton radioButton1680;
         private System.Windows.Forms.GroupBox groupBoxResolution;
-        private System.Windows.Forms.RadioButton radioButtonAutoDetect;
         private System.Windows.Forms.Label labelDragNotification;
         private System.Windows.Forms.GroupBox groupBoxPath;
         private System.Windows.Forms.Label labelPath;
@@ -222,6 +202,9 @@
         private System.Windows.Forms.NotifyIcon notifyIcon;
         private System.Windows.Forms.CheckBox backupCheckbox;
         private System.Windows.Forms.GroupBox GroupBoxOptions;
+        private System.Windows.Forms.Label labelPatchingResolution;
+        private System.Windows.Forms.Button buttonManualOverride;
+        private System.Windows.Forms.Label labelResolution;
     }
 }
 
